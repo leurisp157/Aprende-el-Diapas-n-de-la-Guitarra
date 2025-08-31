@@ -1,0 +1,23 @@
+{
+  "name": "guitar-fretboard-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.2",
+    "typescript": "~5.8.3",
+    "vite": "^7.1.2"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@mui/material": "^7.3.1",
+    "framer-motion": "^12.23.12"
+  }
+}
