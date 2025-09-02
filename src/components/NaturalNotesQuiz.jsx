@@ -36,6 +36,7 @@ const getMajorScale = (tonic) => {
   return scale; // [1, 2, 3, 4, 5, 6, 7]
 };
 
+// Este componente está completamente en español y no utiliza traducción automática.
 export default function NaturalNotesQuiz() {
   const [score, setScore] = useState({ correct: 0, total: 0 });
   const [tonic, setTonic] = useState('C'); // Tónica seleccionada
@@ -114,7 +115,7 @@ export default function NaturalNotesQuiz() {
   };
 
   return (
-    <div className="card" style={{ marginTop: '20px' }}>
+    <div className="card" style={{ marginTop: '20px' }} translate="no">
       <div style={{
         background: '#e8f5e9',
         color: '#2e7d32',
@@ -124,18 +125,18 @@ export default function NaturalNotesQuiz() {
         textAlign: 'center',
         fontSize: '16px'
       }}>
-        🎼 Escala Mayor: Grados Aleatorios
+        <span translate="no">🎼 Escala Mayor: Grados Aleatorios</span>
       </div>
 
-      <h2>🎹 Elige una Tónica</h2>
+      <h2><span translate="no">🎹 Elige una Tónica</span></h2>
       <p style={{ color: '#7f8c8d', fontSize: '15px' }}>
-        Aprende los grados de la escala mayor. Selecciona una nota y responde preguntas aleatorias.
+        <span translate="no">Aprende los grados de la escala mayor. Selecciona una nota y responde preguntas aleatorias.</span>
       </p>
 
       {/* Selector de tónica */}
       <div style={{ marginBottom: '20px', textAlign: 'center' }}>
         <label style={{ fontWeight: 'bold', marginRight: '10px' }}>
-          Tónica:
+          <span translate="no">Tónica:</span>
         </label>
         <select
           value={tonic}
@@ -150,7 +151,7 @@ export default function NaturalNotesQuiz() {
           }}
         >
           {NATURAL_TONICS.map(note => (
-            <option key={note} value={note}>
+            <option key={note} value={note} translate="no">
               {note} mayor
             </option>
           ))}
@@ -167,9 +168,9 @@ export default function NaturalNotesQuiz() {
           fontSize: '14px',
           textAlign: 'center'
         }}>
-          <strong>Escala de {tonic} mayor:</strong><br />
+          <strong translate="no">Escala de {tonic} mayor:</strong><br />
           {scale.map((note, i) => (
-            <span key={i}>
+            <span key={i} translate="no">
               {note}<sup>{i + 1}</sup>{i < 6 ? ' – ' : ''}
             </span>
           ))}
@@ -178,7 +179,7 @@ export default function NaturalNotesQuiz() {
 
       {/* Pregunta */}
       <p style={{ fontSize: '18px', margin: '20px 0', textAlign: 'center' }}>
-        <strong>{question}</strong>
+        <strong translate="no">{question}</strong>
       </p>
 
       {/* Opciones */}
@@ -205,6 +206,7 @@ export default function NaturalNotesQuiz() {
             }}
             onClick={() => !selected && checkAnswer(note)}
             disabled={selected}
+            translate="no"
           >
             {note}
           </button>
@@ -221,7 +223,7 @@ export default function NaturalNotesQuiz() {
           color: feedback.includes('Correcto') ? '#27ae60' : '#c0392b',
           border: `1px solid ${feedback.includes('Correcto') ? '#27ae60' : '#e74c3c'}`,
           fontWeight: 'bold'
-        }}>
+        }} translate="no">
           {feedback}
         </p>
       )}
@@ -229,11 +231,11 @@ export default function NaturalNotesQuiz() {
       {/* Botones */}
       <div style={{ marginTop: '20px', textAlign: 'center' }}>
         {selected ? (
-          <button className="btn" style={{ backgroundColor: '#2980b9' }} onClick={nextQuestion}>
+          <button className="btn" style={{ backgroundColor: '#2980b9' }} onClick={nextQuestion} translate="no">
             Siguiente Pregunta ➜
           </button>
         ) : (
-          <p style={{ color: '#7f8c8d', fontSize: '14px' }}>
+          <p style={{ color: '#7f8c8d', fontSize: '14px' }} translate="no">
             Elige una opción para responder...
           </p>
         )}
@@ -243,6 +245,7 @@ export default function NaturalNotesQuiz() {
             className="btn"
             style={{ backgroundColor: '#95a5a6', fontSize: '12px' }}
             onClick={resetScore}
+            translate="no"
           >
             Reiniciar Puntuación
           </button>
@@ -250,7 +253,7 @@ export default function NaturalNotesQuiz() {
       </div>
 
       {/* Puntuación */}
-      <p style={{ textAlign: 'center', marginTop: '15px', fontSize: '14px' }}>
+      <p style={{ textAlign: 'center', marginTop: '15px', fontSize: '14px' }} translate="no">
         <strong>Puntuación:</strong> {score.correct} / {score.total}
       </p>
 
@@ -263,8 +266,8 @@ export default function NaturalNotesQuiz() {
         fontSize: '14px',
         textAlign: 'center'
       }}>
-        <strong>Fórmula escala mayor:</strong> T–T–st–T–T–T–st<br />
-        <span style={{ fontSize: '12px', color: '#555' }}>
+        <strong translate="no">Fórmula escala mayor:</strong> <span translate="no">T–T–st–T–T–T–st</span><br />
+        <span style={{ fontSize: '12px', color: '#555' }} translate="no">
           (tono, tono, semitono, tono, tono, tono, semitono)
         </span>
       </div>
