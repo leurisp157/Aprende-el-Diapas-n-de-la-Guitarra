@@ -37,7 +37,7 @@ export default function QuizGame() {
   const [answer, setAnswer] = useState('');
   const [feedback, setFeedback] = useState('');
   const [showAnswer, setShowAnswer] = useState(false);
-  const [mode, setMode] = useState('position'); // 'position' o 'sound' (simulado)
+  const [mode, setMode] = useState('position');
   const [showHelp, setShowHelp] = useState(false);
 
   // Generar pregunta aleatoria
@@ -89,13 +89,12 @@ export default function QuizGame() {
     generateQuestion();
   };
 
-  // Iniciar al cargar
   useEffect(() => {
     generateQuestion();
   }, []);
 
   return (
-    <div className="card" style={{ marginTop: '20px' }}>
+    <div className="card" style={{ marginTop: '20px' }} translate="no">
       {/* Encabezado con modo */}
       <div style={{
         background: '#eafaf1',
@@ -107,15 +106,15 @@ export default function QuizGame() {
         fontSize: '16px',
         marginBottom: '15px'
       }}>
-        🎯 Adivina la Nota
+        <span translate="no">🎯 Adivina la Nota</span>
       </div>
 
-      <h2>🎮 Practica el Diapasón</h2>
-      <p style={{ color: '#7f8c8d', fontSize: '15px', lineHeight: '1.5' }}>
+      <h2 translate="no">🎮 Practica el Diapasón</h2>
+      <p style={{ color: '#7f8c8d', fontSize: '15px', lineHeight: '1.5' }} translate="no">
         Identifica la nota en la posición indicada. Ideal para dominar el mástil.
       </p>
 
-      {/* Selector de modo (futuro: sonido) */}
+      {/* Selector de modo */}
       <div style={{ marginBottom: '15px', textAlign: 'center' }}>
         <button
           className="btn"
@@ -125,6 +124,7 @@ export default function QuizGame() {
             padding: '6px 10px'
           }}
           onClick={() => setMode('position')}
+          translate="no"
         >
           Por Posición
         </button>
@@ -139,18 +139,20 @@ export default function QuizGame() {
           }}
           disabled
           title="Modo sonido (próximamente)"
+          translate="no"
         >
           Por Sonido 🎧
         </button>
       </div>
 
       {/* Puntuación */}
-      <p style={{ marginBottom: '15px', fontSize: '14px' }}>
+      <p style={{ marginBottom: '15px', fontSize: '14px' }} translate="no">
         <strong>Puntuación:</strong> {score.correct} / {score.total}
         <button
           className="btn"
           style={{ marginLeft: '10px', background: '#95a5a6', fontSize: '12px' }}
           onClick={resetScore}
+          translate="no"
         >
           Reiniciar
         </button>
@@ -158,6 +160,7 @@ export default function QuizGame() {
           className="btn"
           style={{ marginLeft: '8px', background: '#3498db', fontSize: '12px' }}
           onClick={() => setShowHelp(prev => !prev)}
+          translate="no"
         >
           {showHelp ? 'Ocultar' : 'Ayuda'}
         </button>
@@ -173,7 +176,7 @@ export default function QuizGame() {
           fontSize: '14px',
           color: '#555',
           border: '1px solid #eee'
-        }}>
+        }} translate="no">
           <strong>Ejemplo:</strong> En la 6ª cuerda (E), traste 5 → <strong>A</strong><br />
           Recuerda: Mi-Fa y Si-Do están a 1 traste de distancia.
         </div>
@@ -198,11 +201,11 @@ export default function QuizGame() {
               padding: '10px 16px',
               fontWeight: 'bold',
               fontSize: '18px'
-            }}>
+            }} translate="no">
               {STRING_NAMES[current.string]}
             </span>
 
-            {/* Traste (con indicador si es al aire) */}
+            {/* Traste */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -220,7 +223,7 @@ export default function QuizGame() {
                 fontSize: '22px',
                 textAlign: 'center',
                 lineHeight: current.fret === 0 ? '48px' : '48px'
-              }}>
+              }} translate="no">
                 {current.fret === 0 ? '0' : current.fret}
               </span>
               {current.fret === 0 && (
@@ -228,7 +231,7 @@ export default function QuizGame() {
                   fontSize: '14px',
                   color: '#7f8c8d',
                   whiteSpace: 'nowrap'
-                }}>
+                }} translate="no">
                   (al aire)
                 </span>
               )}
@@ -239,7 +242,7 @@ export default function QuizGame() {
             fontSize: '17px',
             marginBottom: '15px',
             fontWeight: 'bold'
-          }}>
+          }} translate="no">
             ¿Qué nota se encuentra aquí?
           </p>
 
@@ -270,6 +273,7 @@ export default function QuizGame() {
                 }}
                 onClick={() => !showAnswer && checkAnswer(opt)}
                 disabled={showAnswer}
+                translate="no"
               >
                 {opt}
               </button>
@@ -287,7 +291,7 @@ export default function QuizGame() {
               fontWeight: 'bold',
               fontSize: '16px',
               border: `1px solid ${feedback.startsWith('¡Correcto') ? '#27ae60' : '#e74c3c'}`
-            }}>
+            }} translate="no">
               {feedback}
             </p>
           )}
@@ -302,6 +306,7 @@ export default function QuizGame() {
               padding: '10px 20px',
               fontWeight: 'bold'
             }}
+            translate="no"
           >
             Siguiente Nota ➜
           </button>
